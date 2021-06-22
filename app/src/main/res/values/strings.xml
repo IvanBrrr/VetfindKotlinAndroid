@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Vetfind</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="vetfind">VetFind</string>
+    <string name="search">Поиск</string>
+    <string name="brands">Бренды</string>
+    <string name="pharmacies">Аптеки</string>
+    <string name="stocks">Акции</string>
+    <string name="articles">Статьи</string>
+    <string name="amount">Цена</string>
+    <string name="distance">Расстояние</string>
+    <string name="sort_by">Сортировка по</string>
+</resources>
