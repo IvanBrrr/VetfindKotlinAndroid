@@ -20,5 +20,26 @@
         android:id="@+id/homeFragment"
         android:name="com.egorov.vetfind.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_organizationsFragment"
+            app:destination="@id/organizationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/organizationsFragment"
+        android:name="com.egorov.vetfind.ui.organizations.OrganizationsFragment"
+        android:label="fragment_organizations"
+        tools:layout="@layout/fragment_organizations" >
+        <action
+            android:id="@+id/action_organizationsFragment_to_organizationActivity"
+            app:destination="@id/organizationActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/organizationActivity"
+        android:name="com.egorov.vetfind.ui.organization.OrganizationActivity"
+        android:label="OrganizationActivity">
+        <argument
+            android:name="companyId"
+            app:argType="long" />
+    </activity>
 </navigation>

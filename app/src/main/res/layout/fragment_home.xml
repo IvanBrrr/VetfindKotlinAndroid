@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView"
+        android:id="@+id/search"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -46,6 +46,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         app:cardElevation="5dp"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
@@ -108,10 +110,10 @@
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="@+id/materialCardView"
+        app:layout_constraintEnd_toEndOf="@+id/search"
         app:layout_constraintHorizontal_bias="0.77"
-        app:layout_constraintStart_toStartOf="@+id/materialCardView"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        app:layout_constraintStart_toStartOf="@+id/search"
+        app:layout_constraintTop_toBottomOf="@+id/search"
         app:layout_constraintVertical_bias="0.36"
         app:layout_constraintVertical_chainStyle="packed">
 

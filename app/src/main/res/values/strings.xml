@@ -11,4 +11,12 @@
     <string name="amount">Цена</string>
     <string name="distance">Расстояние</string>
     <string name="sort_by">Сортировка по</string>
+    <string name="no_data">Нет данных</string>
+    <string name="not_found">Не найдено</string>
+    <string name="try_again_later">Повторите попытку позже</string>
+    <string name="internet_is_not_connected">Интернет-соединение не подключен</string>
+    <string name="map">Карта</string>
+    <string name="brand">Бренд</string>
+    <string name="count">Количество</string>
+    <string name="bulk">Масса</string>
 </resources>
