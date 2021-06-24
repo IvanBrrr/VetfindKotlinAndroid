@@ -1,5 +1,6 @@
 package com.egorov.vetfind.data.network
 
+import com.egorov.vetfind.model.Company
 import com.egorov.vetfind.model.CompanyProduct
 import retrofit2.Response
 import retrofit2.http.GET
@@ -12,10 +13,14 @@ interface VetfindApi {
         @Query("sortBy") sortBy: String,
         @Query("latitude") latitude: String,
         @Query("longitude") longitude: String,
+        @Query("isOpenNow") isOpenNow: Boolean
     ): Response<List<CompanyProduct>>
 
     @GET("find/by-company-id")
     suspend fun fetchOrganization(
         @Query("companyId") companyId: Long
     ): Response<List<CompanyProduct>>
+
+    @GET("company")
+    suspend fun fetchOrganizations(): Response<List<Company>>
 }

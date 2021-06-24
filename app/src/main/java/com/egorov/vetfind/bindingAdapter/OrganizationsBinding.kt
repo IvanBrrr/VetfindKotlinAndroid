@@ -8,8 +8,8 @@ import com.egorov.vetfind.ui.organizations.OrganizationsFragmentDirections
 class OrganizationsBinding {
     companion object {
         @JvmStatic
-        @BindingAdapter("android:sendCompanyIdToOrganization")
-        fun sendCompanyIdToOrganization(view: View, companyId: Long) {
+        @BindingAdapter("android:sendCompanyIdFromOrganizationsToOrganization")
+        fun sendCompanyIdFromOrganizationsToOrganization(view: View, companyId: Long) {
             view.setOnClickListener {
                 val action = OrganizationsFragmentDirections.actionOrganizationsFragmentToOrganizationActivity(companyId)
                 it.findNavController().navigate(action)

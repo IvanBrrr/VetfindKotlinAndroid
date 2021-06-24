@@ -5,5 +5,6 @@ data class Company(
     val name: String,
     val address: String,
     val geo: String,
-    val phone: String
+    val phone: String,
+    val distance: String? = null
 )

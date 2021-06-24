@@ -19,4 +19,5 @@
     <string name="brand">Бренд</string>
     <string name="count">Количество</string>
     <string name="bulk">Масса</string>
+    <string name="isOpenNow">Работающие в данный момент</string>
 </resources>

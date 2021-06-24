@@ -22,6 +22,10 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         binding.search.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchProductsFragment)
+        }
+
+        binding.linearLayout1.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_organizationsFragment)
         }
 

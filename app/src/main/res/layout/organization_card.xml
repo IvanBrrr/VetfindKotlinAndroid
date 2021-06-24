@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
-            name="companyProduct"
-            type="com.egorov.vetfind.model.CompanyProduct" />
+            name="company"
+            type="com.egorov.vetfind.model.Company" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:sendCompanyIdToOrganization="@{companyProduct.company.id}"
         android:layout_margin="12dp"
-        app:cardCornerRadius="12dp"
         android:clickable="true"
         android:focusable="true"
-        app:cardBackgroundColor="@color/lightGray">
-
+        android:sendCompanyIdFromOrganizationsToOrganization="@{company.id}"
+        app:cardBackgroundColor="@color/lightGray"
+        app:cardCornerRadius="12dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="18dp">
-
             <TextView
                 android:id="@+id/companyName"
                 android:layout_width="wrap_content"
@@ -32,36 +29,27 @@
                 android:layout_alignParentLeft="true"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="18sp"
-                android:text="@{companyProduct.company.name, default=`Company name`}"
+                android:text="@{company.name, default=`Company name`}"
                 android:layout_alignParentStart="true" />
-
             <TextView
-                android:id="@+id/companyAddress"
+                android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/companyName"
                 android:layout_marginTop="8dp"
-                android:text="@{companyProduct.company.address, default=`Address`}" />
-
+                android:layout_alignParentLeft="true"
+                android:text="@{company.address, default=`Company address`}"
+                android:layout_alignParentStart="true" />
             <TextView
                 android:id="@+id/distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/companyAddress"
+                android:layout_below="@+id/address"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/black"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/black"
-                android:text="@{companyProduct.distance, default=`Distance`}" />
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:textColor="@color/black"
-                android:text="@{companyProduct.price + ` руб.`, default=`Price`}"
-                android:layout_alignParentEnd="true" />
+                android:text="@{company.distance, default=`Company distance`}"
+                android:layout_alignParentStart="true" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

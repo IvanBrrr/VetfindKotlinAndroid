@@ -22,16 +22,19 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
+            android:id="@+id/action_homeFragment_to_searchProductsFragment"
+            app:destination="@id/searchProductsFragment" />
+        <action
             android:id="@+id/action_homeFragment_to_organizationsFragment"
             app:destination="@id/organizationsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/organizationsFragment"
-        android:name="com.egorov.vetfind.ui.organizations.OrganizationsFragment"
+        android:id="@+id/searchProductsFragment"
+        android:name="com.egorov.vetfind.ui.searchProducts.SearchProductsFragment"
         android:label="fragment_organizations"
-        tools:layout="@layout/fragment_organizations" >
+        tools:layout="@layout/fragment_search_products" >
         <action
-            android:id="@+id/action_organizationsFragment_to_organizationActivity"
+            android:id="@+id/action_searchProductsFragment_to_organizationActivity"
             app:destination="@id/organizationActivity" />
     </fragment>
     <activity
@@ -42,4 +45,13 @@
             android:name="companyId"
             app:argType="long" />
     </activity>
+    <fragment
+        android:id="@+id/organizationsFragment"
+        android:name="com.egorov.vetfind.ui.organizations.OrganizationsFragment"
+        android:label="fragment_organizations"
+        tools:layout="@layout/fragment_organizations" >
+        <action
+            android:id="@+id/action_organizationsFragment_to_organizationActivity"
+            app:destination="@id/organizationActivity" />
+    </fragment>
 </navigation>

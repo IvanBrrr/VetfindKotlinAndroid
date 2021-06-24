@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.egorov.vetfind.R
 import com.egorov.vetfind.data.OrganizationsRepository
 import com.egorov.vetfind.data.network.VetfindApi
+import com.egorov.vetfind.model.Company
 import com.egorov.vetfind.model.CompanyProduct
 import com.egorov.vetfind.util.ErrorStatus
 import com.egorov.vetfind.util.NetworkResult
@@ -24,33 +25,35 @@ class VetfindViewModel @Inject constructor(
     application: Application
 ) : AndroidViewModel(application) {
 
-    val organizationsResponse: MutableLiveData<NetworkResult<List<CompanyProduct>>> = MutableLiveData()
+    val searchProductsResponse: MutableLiveData<NetworkResult<List<CompanyProduct>>> = MutableLiveData()
     val organizationResponse: MutableLiveData<NetworkResult<List<CompanyProduct>>> = MutableLiveData()
+    val organizationsResponse: MutableLiveData<NetworkResult<List<Company>>> = MutableLiveData()
     val receiveMessage = { str: Int ->
         getApplication<Application>().getString(str)
     }
 
-    fun fetchOrganizations(
+    fun searchProduct(
         shortName: String,
         sortBy: String,
         latitude: String,
-        longitude: String
+        longitude: String,
+        isOpenNow: Boolean
     ) = viewModelScope.launch(Dispatchers.IO) {
-        organizationsResponse.postValue(NetworkResult.Loading())
+        searchProductsResponse.postValue(NetworkResult.Loading())
         if (isInternetAvailable()) {
             try {
-                val response = repository.remote.fetchProducts(shortName, sortBy, latitude, longitude)
+                val response = repository.remote.fetchProducts(shortName, sortBy, latitude, longitude, isOpenNow)
 
                 if (response.isSuccessful) {
-                    organizationsResponse.postValue(NetworkResult.Success(response.body()!!))
+                    searchProductsResponse.postValue(NetworkResult.Success(response.body()!!))
                 } else {
-                    organizationsResponse.postValue(errorHandler(response))
+                    searchProductsResponse.postValue(errorHandler(response))
                 }
             } catch (e: Exception) {
-                organizationsResponse.postValue(NetworkResult.Error(e.message))
+                searchProductsResponse.postValue(NetworkResult.Error(e.message))
             }
         } else {
-            organizationsResponse.postValue(internetIsNotConnected())
+            searchProductsResponse.postValue(internetIsNotConnected())
         }
     }
 
@@ -72,6 +75,25 @@ class VetfindViewModel @Inject constructor(
             }
         } else {
             organizationResponse.postValue(internetIsNotConnected())
+        }
+    }
+
+    fun fetchOrganizations() = viewModelScope.launch(Dispatchers.IO) {
+        organizationsResponse.postValue(NetworkResult.Loading())
+        if (isInternetAvailable()) {
+            try {
+                val response = repository.remote.fetchOrganizations()
+
+                if (response.isSuccessful) {
+                    organizationsResponse.postValue(NetworkResult.Success(response.body()!!))
+                } else {
+                    organizationsResponse.postValue(errorHandler(response))
+                }
+            } catch (e: Exception) {
+                organizationsResponse.postValue(NetworkResult.Error(e.message))
+            }
+        } else {
+            organizationsResponse.postValue(internetIsNotConnected())
         }
     }
 
